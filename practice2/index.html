@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="utf-8">
+    <title>практика 2</title>
+    <link rel="stylesheet" href="CSS/style.css">
+
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <script src="JS/image.js"></script>
+    <script src="JS/path.js"></script>
+    <script src="JS/main.js"></script>
+
+</head>
+<body>
+    <div class="main">
+        <form id="setting">
+            <p>
+                <label>Время анимации (мс):</label><br>
+                <input type="number" id="duration" value="6000" min="3000" step="1000">
+            </p>
+
+            <p>
+                <button type="button" id="animateBtn">Запустить анимацию</button>
+                <button type="button" id="clearBtn">Очистить</button>
+            </p>
+
+            <div class="effects">
+                <strong>Эффекты во время движения:</strong><br><br>
+
+                Начальный масштаб по x / y:<br>
+                <input type="number" id="sx_start" value="0.4" step="0.1" min="0.1" style="width:80px;">
+                <input type="number" id="sy_start" value="0.4" step="0.1" min="0.1" style="width:80px;"><br><br>
+
+                Конечный масштаб по x / y:<br>
+                <input type="number" id="sx_end" value="0.8" step="0.1" min="0.1" style="width:80px;">
+                <input type="number" id="sy_end" value="0.8" step="0.1" min="0.1" style="width:80px;"><br><br>
+
+                Начальный поворот в градусах:<br>
+                <input type="number" id="rot_start" value="0" step="15"><br><br>
+
+                Конечный поворот в градусах:<br>
+                <input type="number" id="rot_end" value="720" step="90">
+            </div>
+        </form>
+        <svg></svg>
+    </div>
+
+</body>
+</html>
