@@ -5,7 +5,7 @@ function createPathG() {
 
     let data = [];
     const padding = 100;
-    //начальное положение рисунка
+
     let posX = padding;
     let posY = height - padding;
     const h = 5;
@@ -30,7 +30,6 @@ function createPathCircle() {
 
     let data = [];
 
-    //центр расположен в центре svg-элемента, радиус равен трети высоты/ширины
     for (let t = 0; t <= Math.PI * 2; t += 0.1) {
         data.push({
             x: width / 2 + width / 3 * Math.sin(t),
@@ -40,7 +39,7 @@ function createPathCircle() {
     return data;
 }
 
-//создаем путь и отображаем его в svg-элементе
+//путь и его отображение в svg
 function drawPath(typePath) {
     const svg = d3.select("svg");
     const dataPoints = (typePath == 0) ? createPathG() : createPathCircle();
