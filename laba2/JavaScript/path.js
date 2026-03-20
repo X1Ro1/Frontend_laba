@@ -1,0 +1,69 @@
+function createPathG() {
+    const svg = d3.select("svg");
+    const width = svg.attr("width");
+    const height = svg.attr("height");
+
+    let data = [];
+    const padding = 100;
+    //начальное положение рисунка
+    let posX = padding;
+    let posY = height - padding;
+    const h = 5;
+
+    while (posY > padding) {
+        data.push({x: posX, y: posY});
+        posY -= h;
+    }
+
+    while (posX < width - padding) {
+        data.push({x: posX, y: posY});
+        posX += h;
+    }
+    return data;
+}
+
+//массив точек, расположенных по кругу
+function createPathCircle() {
+    const svg = d3.select("svg");
+    const width = svg.attr("width");
+    const height = svg.attr("height");
+
+    let data = [];
+
+    //центр расположен в центре svg-элемента, радиус равен трети высоты/ширины
+    for (let t = 0; t <= Math.PI * 2; t += 0.1) {
+        data.push({
+            x: width / 2 + width / 3 * Math.sin(t),
+            y: height / 2 + height / 3 * Math.cos(t)
+        });
+    }
+    return data;
+}
+
+//создаем путь и отображаем его в svg-элементе
+function drawPath(typePath) {
+    const svg = d3.select("svg");
+    const dataPoints = (typePath == 0) ? createPathG() : createPathCircle();
+
+    const line = d3.line()
+        .x((d) => d.x)
+        .y((d) => d.y);
+
+    const path = svg.append('path')
+        .attr('d', line(dataPoints))
+        .attr('stroke', 'none')
+        .attr('fill', 'none');
+
+    return path;
+}
+
+//функция для движения вдоль пути
+function translateAlong(path) {
+    const length = path.getTotalLength();
+    return function() {
+        return function(t) {
+            const point = path.getPointAtLength(t * length);
+            return `translate(${point.x},${point.y})`;
+        };
+    };
+}

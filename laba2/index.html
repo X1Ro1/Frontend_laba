@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="utf-8">
+    <title>Лаба 2</title>
+    <script src="http://d3js.org/d3.v7.min.js"></script>
+    <script src="JavaScript/image.js"></script>
+    <script src="JavaScript/path.js"></script>
+    <script src="JavaScript/main.js"></script>
+</head>
+<body>
+    <form id="setting">
+        <p id="coords-block">
+            Координаты рисунка:<br>
+            <label for="cx">x:</label>
+            <input type="number" id="cx" name="cx" value="300" min="0" max="600"><br>
+            <label for="cy">y:</label>
+            <input type="number" id="cy" name="cy" value="300" min="0" max="600">
+        </p>
+
+        <p id="scale-block">
+            Масштаб:<br>
+            по x: <input type="number" id="sx" name="sx" value="1" step="0.1" min="0.1"><br>
+            по y: <input type="number" id="sy" name="sy" value="1" step="0.1" min="0.1">
+        </p>
+
+        <p id="rotate-block">
+            Поворот:<br>
+            угол: <input type="number" id="rotate" name="rotate" value="0">
+        </p>
+
+        <input type="button" id="drawBtn" value="Нарисовать">
+        <input type="button" id="clearBtn" value="Очистить">
+
+        <label>
+            <input type="checkbox" id="animationCheck"> Включить анимацию?
+        </label>
+
+
+        <div id="animation-block" style="display: none;">
+            <p>Конечные координаты рисунка:<br>
+                x: <input type="number" id="cx_finish" name="cx_finish" value="550" min="0" max="600"><br>
+                y: <input type="number" id="cy_finish" name="cy_finish" value="550" min="0" max="600">
+            </p>
+            <p>Конечный масштаб:<br>
+                по x: <input type="number" id="sx_finish" name="sx_finish" value="1.5" step="0.1"><br>
+                по y: <input type="number" id="sy_finish" name="sy_finish" value="1.5" step="0.1">
+            </p>
+            <p>Конечный поворот:<br>
+                угол: <input type="number" id="rotate_finish" name="rotate_finish" value="180">
+            </p>
+            <p>Способ анимации: 
+                <select id="easeSelect">
+                    <option value="linear">linear</option>
+                    <option value="elastic">elastic</option>
+                    <option value="bounce">bounce</option>
+                </select>
+            </p>
+            <input type="button" id="animateBtn" value="Анимировать">
+        </div>
+
+        <!-- Переключатель пути -->
+        <label>
+            <input type="checkbox" id="pathCheck"> Перемещение вдоль пути
+        </label>
+
+        <!-- Блок выбора пути -->
+        <div id="path-block" style="display: none;">
+            <p>Пути перемещения: 
+                <select id="pathSelect">
+                    <option value="0">Буквой «Г»</option>
+                    <option value="1">По кругу</option>
+                </select>
+                <input type="button" id="pathBtn" value="Анимировать">
+            </p>
+        </div>
+    </form>
+    
+    <svg></svg>
+</body>
+</html>
