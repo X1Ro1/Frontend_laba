@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Панель редактирования</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="http://d3js.org/d3.v7.min.js"></script>
+    <script src="assets/JavaScript/chart.js"></script>
+    <script src="assets/JavaScript/data.js"></script>
+    <script src="assets/JavaScript/main.js"></script>
+    <script src="assets/JavaScript/table.js"></script>
+</head>
+<body>
+    <div class="header">
+        <h1>Самые популярные аниме 2025 года</h1>
+        <a href="index.html">Главная</a>
+        <a href="page_anime.html">Аниме страница</a>
+        <a href="table_form.html">Таблица</a>
+    </div><br>
+
+    <div class="main">
+        <details open>
+            <summary>График</summary>
+            <form id="graphForm">
+                <h4>Значение по оси X:</h4>
+                <label><input type="radio" name="xAxis" value="Тип" checked> Тип</label><br>
+                <label><input type="radio" name="xAxis" value="Год"> Год</label><br>
+                <label><input type="radio" name="xAxis" value="Жанр"> Жанр</label><br><br>
+
+                <h4>Значение по оси Y:</h4>
+                <label><input type="checkbox" name="yAxis" value="min_time"> Минимальное время серии</label><br>
+                <label><input type="checkbox" name="yAxis" value="max_time" checked> Максимальное время серии</label><br>
+                <label><input type="checkbox" name="yAxis" value="rating"> Средняя оценка аниме</label><br><br>
+
+                <p><strong>Тип графика:</strong></p>
+                <select id="chartType">
+                    <option value="scatter">Точечная диаграмма</option>
+                    <option value="bar">Гистограмма</option>
+                    <option value="line">График</option>
+                </select><br><br>
+
+                <button type="button" id="buildGraph">Построить</button>
+                <p>График:</p>
+            </form>
+            <svg id="chart" width="900" height="400" style="border: 1px solid #ccc; background: #f9f9f9;"></svg>
+        </details>
+
+        <details>
+            <summary>Фильтр</summary>
+            <p>Название: <input type="text"></p>
+            <p>Тип аниме:
+                <select name="type_anime" id="type1">
+                    <option value="1">Не выбрано</option>
+                    <option value="2">Фильм</option>
+                    <option value="3">Сериал</option>
+                </select>
+            </p>
+            <p>Год выпуска: от <input type="number"> до <input type="number"></p>
+            <p>Количество серий: от <input type="number"> до <input type="number"></p>
+            <p>Студия:
+                <select name="studio_anime" id="studio">
+                    <option value="1">Не выбрано</option>
+                    <option value="2">Mappa</option>
+                    <option value="3">WitStudio</option>
+                    <option value="4">Studio Ghibli</option>
+                    <option value="5">Madhouse</option>
+                </select>
+            </p>
+            <p>Страна издатель:
+                <select name="country" id="country1">
+                    <option value="1">Не выбрано</option>
+                    <option value="2">Япония</option>
+                    <option value="3">Китай</option>
+                </select>
+            </p>
+            <button type="button">Найти</button>
+        </details>
+
+        <details>
+            <summary>Сортировка</summary>
+            <p>Первый уровень:
+                <select name="lvl1" id="level_1">
+                    <option value="1">Не выбрано</option>
+                    <option value="2">Название</option>
+                    <option value="3">Тип</option>
+                    <option value="4">Жанр</option>
+                    <option value="5">Студия</option>
+                    <option value="6">Год выпуска</option>
+                    <option value="7">Страна издатель</option>
+                </select>
+                по убыванию? <input type="checkbox">
+            </p>
+            <p>Второй уровень:
+                <select name="lvl2" id="level_2">
+                    <option value="1">Не выбрано</option>
+                    <option value="2">Название</option>
+                    <option value="3">Тип</option>
+                    <option value="4">Жанр</option>
+                    <option value="5">Студия</option>
+                    <option value="6">Год выпуска</option>
+                    <option value="7">Страна издатель</option>
+                </select>
+                по убыванию? <input type="checkbox">
+            </p>
+            <p>Третий уровень:
+                <select name="lvl3" id="level_3">
+                    <option value="1">Не выбрано</option>
+                    <option value="2">Название</option>
+                    <option value="3">Тип</option>
+                    <option value="4">Жанр</option>
+                    <option value="5">Студия</option>
+                    <option value="6">Год выпуска</option>
+                    <option value="7">Страна издатель</option>
+                </select>
+                по убыванию? <input type="checkbox">
+            </p>
+        </details>
+
+        <div class="table">
+            <table id="animeTable" border="1"></table>
+        </div>
+    </div><br><br>
+
+    <div class="footer" align="center">
+        <h2>Егоров Артем Б9123-09.03.04</h2>
+    </div>
+</body>
+</html>
