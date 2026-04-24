@@ -1,0 +1,132 @@
+a {
+  text-decoration: none;
+}
+
+h1 {
+  color: black;
+}
+
+.header {
+  display: block;
+  margin: 20px 0;
+  padding: 10px;
+  border-radius: 10px;
+}
+
+.header a {
+  display: inline-block;
+  font-size: 16px;
+  color: blue;
+  padding: 10px 20px;
+  border-radius: 10px;
+  transition: 0.2s;
+}
+
+.color-btn {
+  background: blue;
+  padding: 10px 20px;
+  color: white;
+  border-radius: 10px;
+}
+
+.header a:hover {
+  background: rgb(73, 73, 255);
+  color: white;
+}
+
+.main {
+  display: block;
+  width: 100%;
+}
+
+.footer {
+  display: block;
+  text-align: center;
+  margin: 20px;
+}
+
+details {
+  margin: 15px 0;
+  border-radius: 8px;
+  padding: 10px;
+  background: #fff;
+}
+
+summary {
+  font-weight: bold;
+  cursor: pointer;
+  font-size: 16px;
+  margin-bottom: 10px;
+}
+
+.table {
+  margin-top: 20px;
+}
+
+table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+td, th {
+  border: 1px solid black;
+  padding: 4px 8px;
+}
+
+th {
+  background: #f0f0f0;
+}
+
+.hide {
+  display: none;
+}
+
+.show {
+  display: table-row;
+}
+
+.pagination {
+  display: flex;
+  gap: 5px;
+  margin: 15px 0;
+}
+
+.page-number {
+  padding: 4px 10px;
+  background: #fff;
+  border: 1px solid #ccc;
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+.page-number.active {
+  background: blue;
+  color: white;
+}
+
+button {
+  margin-right: 10px;
+  padding: 6px 15px;
+  background: rgb(51, 92, 225);
+  color: white;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: 0.2s;
+}
+
+button:hover {
+  background: blue;
+}
+
+button[type="reset"], button.reset {
+  background: #777;
+}
+
+.filter-row, .sort-row {
+  margin: 10px 0;
+}
+
+.filter-row label, .sort-row label {
+  margin-right: 8px;
+}
