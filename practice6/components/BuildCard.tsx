@@ -39,7 +39,6 @@ const BuildCard: React.FC<BuildCardProps> = ({ building, cardNumber, sx = {} }) 
             color="text.secondary"
             sx={{ 
               textAlign: 'justify',
-
             }}
           >
             {para}

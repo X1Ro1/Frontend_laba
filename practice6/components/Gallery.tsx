@@ -9,10 +9,11 @@ const imgData = structures.slice();
 
 const Gallery = () => {
   return (
-    <Container maxWidth="lg">
-      <Box sx={{ height: 500, overflowY: 'scroll'}}>
+    <Container maxWidth="xl">
+      <Box sx={{ height: 500, overflowY: 'scroll'}}> 
         <ImageList
           variant="masonry"
+          gap={0}
           sx={{
             columnCount: {
               xs: '1 !important',
@@ -23,12 +24,13 @@ const Gallery = () => {
           }}
         >
           {imgData.map((item) => (
-            <ImageListItem key={item.img}>
+            <ImageListItem key={item.img} sx={{ height: '250px !important', width: '100% !important' }}>
               <img
                 srcSet={`${item.img}?w=248&fit=crop&auto=format`}
                 src={`${item.img}?w=248&fit=crop&auto=format`}
                 alt={item.title}
                 loading="lazy"
+                style={{ objectFit: 'fill' }} 
               />
               <ImageListItemBar position="bottom" title={item.title} />
             </ImageListItem>
