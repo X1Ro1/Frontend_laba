@@ -5,6 +5,12 @@ import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
+import IconButton from '@mui/material/IconButton';
+import MenuIcon from '@mui/icons-material/Menu';
+import Drawer from '@mui/material/Drawer';
+import MenuItem from '@mui/material/MenuItem';
+import MenuList from '@mui/material/MenuList';
+import CloseRoundedIcon from '@mui/icons-material/CloseRounded';
 import { styled } from '@mui/material/styles';
 
 const StyledToolbar = styled(Toolbar)(({ theme }) => ({
@@ -21,6 +27,11 @@ interface NavbarProps {
 }
 
 const Navbar: React.FC<NavbarProps> = ({ active }) => {
+  const [open, setOpen] = React.useState(false);
+  const toggleDrawer = (newOpen: boolean) => () => {
+    setOpen(newOpen);
+  };
+
   const isActive = (value: string) => active === value;
 
   const menuItems = [
@@ -49,7 +60,6 @@ const Navbar: React.FC<NavbarProps> = ({ active }) => {
                 variant={isActive(item.key) ? "contained" : "text"}
                 sx={{
                   color: isActive(item.key) ? '#fff' : '#fff',
-                  fontSize: '12px',
                   borderColor: greenColor,
                   '&:hover': {
                     backgroundColor: greenColor,
@@ -63,10 +73,47 @@ const Navbar: React.FC<NavbarProps> = ({ active }) => {
                     backgroundColor: greenColor,
                   }
                 }}
+                size="medium"
               >
                 {item.label}
               </Button>
             ))}
+          </Box>
+
+          <Box sx={{ display: { xs: 'flex', md: 'none' } }}>
+            <IconButton aria-label="Menu button" onClick={toggleDrawer(true)}>
+              <MenuIcon sx={{color: 'rgb(255, 255, 255)'}} />
+            </IconButton>
+            <Drawer
+              anchor="top"
+              open={open}
+              onClose={toggleDrawer(false)}
+            >
+              <Box>
+                <IconButton
+                  onClick={toggleDrawer(false)}
+                  sx={{ position: 'absolute', right: 8, top: 8 }}
+                >
+                  <CloseRoundedIcon />
+                </IconButton>
+                <MenuList>
+                  {menuItems.map((item) => (
+                    <MenuItem
+                      key={item.key}
+                      onClick={toggleDrawer(false)}
+                      sx={{
+                        backgroundColor: isActive(item.key) ? 'rgb(2, 132, 2)' : 'transparent',
+                        '&:hover': {
+                          backgroundColor: 'rgb(2, 132, 2)'
+                        }
+                      }}
+                    >
+                      {item.label}
+                    </MenuItem>
+                  ))}
+                </MenuList>
+              </Box>
+            </Drawer>
           </Box>
         </StyledToolbar>
       </Container>
