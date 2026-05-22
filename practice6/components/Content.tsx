@@ -42,6 +42,7 @@ const layout = [
       //2
       {
         height: '450px', 
+        marginTop: '60px'
       }, 
       //3
       {
